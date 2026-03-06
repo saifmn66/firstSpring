@@ -33,9 +33,16 @@
             </select>
         </p>
 
-        <p><input type="submit" class="btn btn-outline-primary" value="Ajouter">
-            <input type="reset" class="btn btn-outline-secondary" value="Effacer">
+        <p>
+            <label for="Acteurs" class="form-label">Acteurs : </label>
+            <select name="Acteurs" class="form-select" id="acteurs" multiple>
+                <option th:each="act : ${acteurs}" th:value="${act.id}" th:text="${act.nom}"></option>
+            </select>
         </p>
+
+        <p><input type="submit" class="btn btn-outline-primary" value="Ajouter">
+                    <input type="reset" class="btn btn-outline-secondary" value="Effacer">
+                </p>
     </form>
 </div>
 </body>

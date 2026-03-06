@@ -18,7 +18,6 @@
             <th>DESCRIPTION</th>
             <th>ANNEE PARUTION</th>
             <th>CATEGORIE</th>
-            <th>ACTEURS</th>
         </tr>
 		</thead>
         <tr th:each="f : ${films}">
@@ -27,13 +26,7 @@
             <td th:text="${f.description}"></td>
             <td th:text="${f.releaseYear}"></td>
             <td th:text="${f.categories.name}"></td>            
-            <td>
-        <span th:each="ac, stat : ${f.acteurs}">
-            <span th:text="${ac.nom}"></span>
-            <span th:if="${!stat.last}">, </span>
-        </span>
-    </td>            
-        </tr>   
+        </tr>
     </table>
 </div>
 </body>
