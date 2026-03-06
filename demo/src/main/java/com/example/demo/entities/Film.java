@@ -1,10 +1,13 @@
 package com.example.demo.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,5 +26,7 @@ public class Film {
     private int releaseYear;
     @ManyToOne
     private Categories categories;
+    @ManyToMany
+    private List<Acteur> acteurs;
 
 }

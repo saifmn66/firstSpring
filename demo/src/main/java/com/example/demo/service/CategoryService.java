@@ -6,11 +6,14 @@ import org.springframework.stereotype.Service;
 import com.example.demo.entities.Categories;
 import com.example.demo.repository.CategoryRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class CategoryService implements IServiceCtaegorie {
 
     
-    private CategoryRepository categoryRepository;
+    private final CategoryRepository categoryRepository;
 
     @Override
     public Categories addCategory(Categories category) {
