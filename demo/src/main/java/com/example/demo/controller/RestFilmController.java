@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.service.IServiceFilm;
@@ -77,4 +78,60 @@ public class RestFilmController {
 
         return ResponseEntity.ok(updated);
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Film>> searchByTitle(
+            @RequestParam String title) {
+
+        List<Film> films = iServiceFilm.searchFilmsByTitle(title);
+
+        return ResponseEntity.ok(films);
+    }
+
+
+    @GetMapping("/by-category")
+    public ResponseEntity<?> getFilmsByCategory(
+            @RequestParam Long idcat) {
+
+        List<Film> films = iServiceFilm.findFilmsByCategory(idcat);
+
+        if (films.isEmpty()) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body("Aucun film trouvé pour cette catégorie");
+        }
+
+        return ResponseEntity.ok(films);
+    }
+
+    @GetMapping("/by-actor")
+    public ResponseEntity<?> getFilmsByActor(
+            @RequestParam int actorId) {
+
+        List<Film> films = iServiceFilm.findFilmsByActor(actorId);
+
+        if (films.isEmpty()) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body("Aucun film trouvé pour cet acteur");
+        }
+
+        return ResponseEntity.ok(films);
+    }
+
+    @GetMapping("/latest")
+    public ResponseEntity<?> getFilmsByLatestYear() {
+
+        List<Film> films = iServiceFilm.findFilmsOrderByYearDesc();
+
+        if (films.isEmpty()) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body("Aucun film trouvé");
+        }
+
+        return ResponseEntity.ok(films);
+    }
+
+
 }

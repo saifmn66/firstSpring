@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.demo.entities.Categories;
 
@@ -10,9 +11,9 @@ public interface IServiceCtaegorie {
 
     List<Categories> getAllCategories();
 
-    Categories getCategoryById(int id);
+    Optional<Categories> getCategoryById(Long id);
 
-    void deleteCategory(int id);
+    void deleteCategory(Long id);
 
-    Categories updateCategory(int id, Categories category);
+    Categories updateCategory(Long id, Categories category);
 }

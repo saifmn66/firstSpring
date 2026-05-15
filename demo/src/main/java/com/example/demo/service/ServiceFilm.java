@@ -53,4 +53,24 @@ public class ServiceFilm implements IServiceFilm {
         return false;
     }
 
+       @Override
+    public List<Film> searchFilmsByTitle(String title) {
+        return filmRepository.findByTitleContainingIgnoreCase(title);
+    }
+
+    @Override
+    public List<Film> findFilmsByCategory(Long idcat) {
+        return filmRepository.findByCategoriesId(idcat);
+    }
+
+    @Override
+    public List<Film> findFilmsByActor(int acteurId) {
+        return filmRepository.findByActeursId(acteurId);
+    }
+
+    @Override
+    public List<Film> findFilmsOrderByYearDesc() {
+        return filmRepository.findByOrderByReleaseYearDesc();
+    }
+
 }
